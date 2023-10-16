@@ -1,0 +1,33 @@
+@import './variables';
+@import './libs/normalize';
+
+body {
+  background-color: $background;
+}
+
+.app-wrapper {
+  width: calc(100vw - 100px);
+  min-height: 500px;
+  background-color: #fff;
+  margin: 50px auto;
+  border-radius: 10px;
+  max-width: 1400px;
+  padding: 50px;
+}
+
+button {
+  width: 150px;
+  height: 70px;
+  border: none;
+  outline: none;
+  background: $black;
+  color: $white;
+  font-size: 22px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: 10px;
+}
