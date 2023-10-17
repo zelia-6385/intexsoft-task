@@ -16,8 +16,8 @@ export type DataItem = {
 interface AutoCompleteInputProps {
   data: DataItem[];
   inputDebounce?: number;
-  onSearch: (keyword: string, results: DataItem[]) => void;
-  onSelect?: (result: string) => void;
+  onSearch: (keyword: string) => void;
+  onSelect: (result: string) => void;
   onFocus?: FocusEventHandler<HTMLInputElement>;
   showIcon?: boolean;
   maxResults?: number;
@@ -62,7 +62,7 @@ export const AutoCompleteInput = ({
 
   useEffect(() => {
     if (results) {
-      onSearch(searchString, results);
+      onSearch(searchString);
       setIsTyping(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -96,8 +96,8 @@ export const AutoCompleteInput = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleOnSearch = useCallback(
     inputDebounce > 0
-      ? debounce((keyword: string) => onSearch(keyword, data), inputDebounce)
-      : (keyword: string) => onSearch(keyword, data),
+      ? debounce((keyword: string) => onSearch(keyword), inputDebounce)
+      : (keyword: string) => onSearch(keyword),
     [results],
   );
 
@@ -138,7 +138,7 @@ export const AutoCompleteInput = ({
         onClick={handleOnClick}
         setSearchString={setSearchString}
         showNoResultsFlag={showNoResultsFlag}
-        results={data}
+        results={!isSearchComplete ? data : []}
         maxResults={maxResults}
         showNoResultsText={showNoResultsText}
       />

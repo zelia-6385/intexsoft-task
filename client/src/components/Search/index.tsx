@@ -26,10 +26,6 @@ const Search = ({
   setSearchString,
   autoFocus,
 }: SearchProps) => {
-  const onBlur = () => {
-    !searchString && eraseResults();
-  };
-
   return (
     <div className={styles.root}>
       {showIcon ? <SearchIcon className={styles.icon} /> : null}
@@ -40,7 +36,6 @@ const Search = ({
         className={styles.input}
         placeholder={placeholder}
         onFocus={onFocus}
-        onBlur={onBlur}
         autoFocus={autoFocus}
         name="name"
       />

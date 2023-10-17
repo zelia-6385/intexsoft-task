@@ -23,6 +23,10 @@ const App: FC = () => {
     setData(data);
   };
 
+  const cleanData = () => {
+    setData([]);
+  };
+
   useEffect(() => {
     if (searchValue.length) {
       getResults(searchValue);
@@ -38,8 +42,10 @@ const App: FC = () => {
           placeholder={'Поиск...'}
           data={data}
           onSearch={setSearchValue}
+          onSelect={cleanData}
           inputSearchString={searchValue}
           inputDebounce={1200}
+          autoFocus
         />
 
         <button type="submit" onClick={formSubmit}>
